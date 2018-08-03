@@ -1,0 +1,17 @@
+ ul {
+  list-style-type: none;
+  padding: 0;
+}
+/*
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid rgb(232, 14, 14);
+  margin: 1em 0;
+  padding: 0;
+} */
+
+::ng-deep .arrow-white>.mat-expansion-indicator:after {
+  color: white;
+}

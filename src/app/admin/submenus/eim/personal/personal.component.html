@@ -1,0 +1,178 @@
+<form [formGroup]="personalForm" (ngSubmit)="onSubmit()">
+  <div class="col-9">
+    <div formGroupName="contactDetails">
+      <div class="row">
+        <div class="col-7">
+          <span>
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="Email" type="email" formControlName="email">
+              <mat-error *ngIf="personalForm.get('contactDetails').get('email').hasError('email') && !personalForm.get('contactDetails').get('email').hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="personalForm.get('contactDetails').get('email').hasError('required')">
+                Email is
+                <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </span>
+        </div>
+        <div class="col-5">
+          <span>
+            <mat-form-field style="width: 100%">
+              <input matInput appNumbersOnly maxlength="10" placeholder="Phone" type="text" formControlName="phone">
+              <mat-error *ngIf=" personalForm.get('contactDetails').get('phone').hasError('required')">
+                Please enter your phone number!
+              </mat-error>
+            </mat-form-field>
+          </span>
+        </div>
+      </div>
+
+      <div formGroupName="address">
+        <div class="row">
+          <div class="col-12">
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="Address" type="text" formControlName="address">
+              <mat-hint>Enter all the address in one line.</mat-hint>
+              <mat-error *ngIf="personalForm.get('contactDetails').get('address').get('address').hasError('required')">
+                Please enter your address!
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="City/District" type="text" formControlName="city">
+              <mat-error *ngIf="personalForm.get('contactDetails').get('address').get('city').hasError('required')">
+                Please enter your city!
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-4">
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="State" type="text" formControlName="state">
+              <mat-error *ngIf="personalForm.get('contactDetails').get('address').get('state').hasError('required')">
+                Please enter your state!
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-4">
+            <mat-form-field style="width: 100%">
+              <input appNumbersOnly maxlength="6" matInput placeholder="Pincode" type="text" formControlName="pincode">
+              <mat-error *ngIf="personalForm.get('contactDetails').get('address').get('pincode').hasError('required')">
+                Please enter your pincode!
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <hr style="margin-top: 5%;margin-bottom: 5%">
+  </div>
+
+
+  <div class="col-8">
+
+    <div class="row">
+      <div class="col-5">
+        <mat-form-field style="width: 100%">
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" formControlName="dob" placeholder="Date of Birth">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="personalForm.get('dob').hasError('required')">
+            DOB is
+            <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-1"></div>
+      <div class="col-5">
+        <mat-form-field style="width: 100%">
+          <mat-select placeholder="Gender" formControlName="gender">
+            <mat-option *ngFor="let gender of genders" [value]="gender.value">
+              {{gender.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="personalForm.get('gender').hasError('required')">
+            Please provide your gender!
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-5">
+        <mat-form-field style="width: 100%">
+          <mat-select placeholder="Marital Status" formControlName="maritalStatus">
+            <mat-option *ngFor="let maritalStatusItem of maritalStatus" [value]="maritalStatusItem.value">{{maritalStatusItem.viewValue}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="personalForm.get('maritalStatus').hasError('required')">
+            Please enter your marital status!
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-1"></div>
+      <div class="col-5">
+        <mat-form-field style="width: 100%">
+          <mat-select formControlName="bloodGroup" placeholder="Blood Group">
+            <mat-option *ngFor="let bloodGroup of bloodGroups" [value]="bloodGroup.value">{{bloodGroup.viewValue}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="personalForm.get('bloodGroup').hasError('required')">Please enter your blood group!</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-5">
+        <mat-form-field style="width: 100%">
+          <input matInput placeholder="Nationality" type="text" formControlName="nationality">
+          <mat-error *ngIf="personalForm.get('nationality').hasError('required')">
+            Please enter your nationality!
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-5">
+        <mat-form-field style="width:100%">
+          <mat-select placeholder="Category" formControlName="category">
+            <mat-option *ngFor="let category of categories" [value]="category.value">
+              {{category.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="personalForm.get('category').hasError('required')">
+            Please provide your category!
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-1"></div>
+
+      <div class="col-5">
+        <mat-form-field style="width:100%">
+          <mat-select placeholder="Religion" formControlName="religion">
+            <mat-option *ngFor="let religion of religions" [value]="religion.value">
+              {{religion.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="personalForm.get('religion').hasError('required')">
+            Please provide your religion!
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <button mat-raised-button color="warn" type="submit">Submit</button>
+      </div>
+    </div>
+
+  </div>
+</form>

@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row col-12">
+    <div style="width: 20%; ">
+
+      <mat-card style="margin-bottom: 5%">
+        <img src="../../../../assets/logo.png" alt="logo" width="100%">
+      </mat-card>
+
+      <mat-card style="background-color: #725191 ; color:white; margin-bottom: 2%">
+        Welcome User
+      </mat-card>
+      <mat-accordion>
+        <!-- <mat-expansion-panel>
+            <mat-expansion-panel-header style="background-color: #725191 ; color:white" class="arrow-white">
+              Welcome User!
+            </mat-expansion-panel-header>
+          </mat-expansion-panel> -->
+        <div *ngFor="let menuItem of menus; let i = index">
+          <app-panel-generator [panelItem]="menuItem"></app-panel-generator>
+        </div>
+      </mat-accordion>
+    </div>
+    <div style="width: 3%"></div>
+
+    <div style="width: 77%">
+      <mat-card>
+        <router-outlet></router-outlet>
+      </mat-card>
+    </div>
+  </div>
+</div>

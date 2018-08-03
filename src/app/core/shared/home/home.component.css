@@ -1,0 +1,4 @@
+::ng-deep .arrow-white>.mat-expansion-indicator:after {
+    color: white;
+  }
+  

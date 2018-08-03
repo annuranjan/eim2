@@ -1,0 +1,8 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header style="background-color: rgb(114, 81, 145); color:white" class="arrow-white">
+    {{panelItem.title}}
+  </mat-expansion-panel-header>
+  <ul *ngFor="let submenuTitle of submenuKeys; let i = index" style="margin-top: 10%">
+    <li (click)="onSubmenuClick(submenuTitle)" class="verticalTextAlign">{{submenuTitle}}</li>
+  </ul>
+</mat-expansion-panel>

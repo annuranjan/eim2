@@ -1,0 +1,53 @@
+<form [formGroup]="companyForm" (ngSubmit)=" onSubmit()">
+  <div class="col-8">
+
+    <div class="row">
+      <mat-form-field class="col-5">
+        <input matInput placeholder="Employee Status" type="text" formControlName="employeeStatus">
+        <mat-error *ngIf="companyForm.get('employeeStatus').hasError('required')">Please enter the status of the employee!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col-5">
+        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" formControlName="dateOfJoining" placeholder="Date of Joining">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error> Please enter the joining date of the employee!</mat-error>
+      </mat-form-field>
+      <!--Date of leaving will be set automatically!-->
+      <mat-form-field class="col-5">
+        <input matInput formControlName="dateOfLeaving" placeholder="Date of Leaving" readonly>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col-5">
+        <input matInput placeholder="Department" type="text" formControlName="dept">
+        <mat-error *ngIf="companyForm.get('dept').hasError('required')">Please enter the dept of the employee!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col-5">
+        <input matInput placeholder="Designation" type="text" formControlName="designation">
+        <mat-error *ngIf="companyForm.get('designation').hasError('required')">Please enter the designation of the employee!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col-5">
+        <input appNumbersOnly matInput placeholder="Salary" type="text" formControlName="salary">
+        <mat-error *ngIf="companyForm.get('salary').hasError('required')">Please enter the employee's salary!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col-5">
+        <input matInput placeholder="Reporting Person" type="text" formControlName="manager">
+        <mat-error *ngIf="companyForm.get('manager').hasError('required')">Please enter the name of the person employee is reporting to!</mat-error>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="warn">Submit</button>
+  </div>
+</form>

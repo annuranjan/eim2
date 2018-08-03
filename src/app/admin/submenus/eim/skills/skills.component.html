@@ -1,0 +1,79 @@
+<form [formGroup]="skillsForm" (ngSubmit)="onSubmit()">
+  <div class="col-8">
+    <div formArrayName="languages">
+      <div class="row">
+        <div class="col-2">
+          <button mat-raised-button color="warn" type="button" (click)="addALanguage()">Add a language</button>
+        </div>
+      </div>
+
+      <div *ngFor="let language of skillsForm.get('languages').controls; let i = index">
+        <div class="row">
+          <div class="col-8">
+            <mat-form-field style="width: 100%">
+              <input matInput placeholder="Language" type="text" [formControlName]="i">
+              <mat-error *ngIf="language.hasError('required')">Please enter the language!</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-2">
+            <button mat-raised-button color="accent" (click)="deleteALanguage(i)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr style="margin-bottom: 5%; margin-top: 5%">
+  </div>
+  <div class="col-12">
+
+    <div formArrayName="trainings">
+      <div class="row">
+        <div class="col-2">
+          <button mat-raised-button color="warn" type="button" (click)="addATraining()">Add a training</button>
+        </div>
+      </div>
+
+      <div *ngFor="let trainingGroup of skillsForm.get('trainings').controls; let i = index">
+        <div [formGroupName]="i">
+          <div class="row">
+            <div class="col-4">
+              <mat-form-field style="width: 100%">
+                <input matInput placeholder="Training Name" type="text" formControlName="trainingName">
+              </mat-form-field>
+            </div>
+            <div class="col-3">
+              <mat-form-field style="width: 100%">
+                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" formControlName="dateOfCompletion" placeholder="Date of Completion">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <div class="col-2">
+              <mat-form-field style="width: 100%">
+                <input matInput placeholder="Passing Grade" type="text" formControlName="passingGrade">
+              </mat-form-field>
+            </div>
+
+            <div class="col-1">
+              <button mat-raised-button color="warn" (click)="deleteATraining(i)">Delete</button>
+            </div>
+
+            <mat-error *ngIf="trainingGroup.get('trainingName').invalid && trainingGroup.get('trainingName').touched">Please enter the training name! </mat-error>
+            <mat-error *ngIf="trainingGroup.get('dateOfCompletion').invalid && trainingGroup.get('dateOfCompletion').touched">Please enter the date of completion! </mat-error>
+            <mat-error *ngIf="trainingGroup.get('passingGrade').invalid && trainingGroup.get('passingGrade').touched">Please enter the passing grade! </mat-error>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="statusInvalid == true" style="color:red">
+      Please fill all the required fields and then hit "Submit"!
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <button mat-raised-button color="warn" type="submit">Submit</button>
+      </div>
+    </div>
+
+  </div>
+</form>

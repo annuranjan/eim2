@@ -1,0 +1,65 @@
+<div class="col-8" *ngIf="!submittedSuccessfully">
+  <form [formGroup]="addEmpForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <mat-form-field class="col-8">
+        <input matInput placeholder="First Name" type="text" formControlName="firstname">
+        <mat-error *ngIf="addEmpForm.get('firstname').hasError('required')">Please enter your first name!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col-8">
+        <input matInput placeholder="Middle Name" type="text" formControlName="middlename">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col-8">
+        <input matInput placeholder="Last Name" type="text" formControlName="lastname">
+        <mat-error *ngIf="addEmpForm.get('lastname').hasError('required')">Please enter your last name!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col-8">
+        <input matInput placeholder="Email" type="email" formControlName="email" name="email">
+        <mat-error *ngIf="addEmpForm.get('email').hasError('email') && !addEmpForm.get('email').hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="addEmpForm.get('email').hasError('required')">
+          Email is
+          <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <div class="row">
+      <mat-form-field class="col-8">
+        <mat-select placeholder="User type" formControlName="usertype">
+          <mat-option *ngFor="let usertype of usertypes" [value]="usertype.value">
+            {{usertype.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="addEmpForm.get('usertype').hasError('required')">
+          Usertype is
+          <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <div class="col-8">
+        <button mat-raised-button [disabled]="addEmpForm.invalid" type="submit" style="margin-bottom: 4%;margin-top: 2%">Submit</button>
+      </div>
+    </div>
+
+  </form>
+</div>
+<div *ngIf="submittedSuccessfully">
+  <p>New employee successfully added!</p>
+</div>
+
+
+
+<!-- <mat-form-field></mat-form-field> -->
