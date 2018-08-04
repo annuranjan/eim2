@@ -3,7 +3,7 @@
     <div formArrayName="languages">
       <div class="row">
         <div class="col-2">
-          <button mat-raised-button color="warn" type="button" (click)="addALanguage()">Add a language</button>
+          <button mat-raised-button class="lavButton" type="button" (click)="addALanguage()">Add a language</button>
         </div>
       </div>
 
@@ -16,7 +16,7 @@
             </mat-form-field>
           </div>
           <div class="col-2">
-            <button mat-raised-button color="accent" (click)="deleteALanguage(i)">Delete</button>
+            <button mat-raised-button color="warn" (click)="deleteALanguage(i)">Delete</button>
           </div>
         </div>
       </div>
@@ -29,7 +29,7 @@
     <div formArrayName="trainings">
       <div class="row">
         <div class="col-2">
-          <button mat-raised-button color="warn" type="button" (click)="addATraining()">Add a training</button>
+          <button mat-raised-button class="lavButton" type="button" (click)="addATraining()">Add a training</button>
         </div>
       </div>
 
@@ -71,7 +71,7 @@
     </div>
     <div class="row">
       <div class="col-2">
-        <button mat-raised-button color="warn" type="submit">Submit</button>
+        <button mat-raised-button class="lavButton" type="submit">Submit</button>
       </div>
     </div>
 

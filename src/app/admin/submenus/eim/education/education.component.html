@@ -1,3 +1,48 @@
-<p>
-  education works!
-</p>
+<form [formGroup]="eduForm" (ngSubmit)="onSubmit()">
+  <div class="col-11">
+
+    <div class="row" style="margin-bottom: 2%">
+      <div class="col">
+        <button mat-raised-button type="button" class="lavButton" (click)="addAnEducation()"> Add a Qualification</button>
+      </div>
+    </div>
+
+    <div formArrayName="education">
+      <div *ngFor="let eduGroup of eduForm.get('education').controls; let i = index">
+        <div [formGroupName]="i">
+          <div class="row">
+            <div class="col-4">
+              <mat-form-field style="width: 100%">
+                <input matInput type="text" placeholder="Degree Name" formControlName="qualification">
+              </mat-form-field>
+            </div>
+            <div class="col-4">
+              <mat-form-field style="width: 100%">
+                <input matInput type="text" placeholder="School Name" formControlName="schoolName">
+              </mat-form-field>
+            </div>
+            <div class="col-1">
+              <mat-form-field style="width: 100%">
+                <input matInput type="text" placeholder="Year" formControlName="passingYear">
+              </mat-form-field>
+            </div>
+            <div class="col-1">
+              <mat-form-field style="width: 100%">
+                <input matInput type="text" placeholder="Grade" formControlName="passingGrade" maxlength="1">
+              </mat-form-field>
+            </div>
+            <div class="col-1">
+              <button mat-raised-button color="warn" type="button" (click)="deleteAnEducation(i)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button mat-raised-button class="lavButton">Submit</button>
+
+  </div>
+</form>
+
+
+<!-- // qualification: String, // schoolName: String, // passingYear: String, // passingGrade: String -->

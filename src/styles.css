@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-.btn-primary {
-  background-color: #4F3468 !important;
-  border-color: #4F3468 !important;
+.lavButton {
+  background-color: #c0add1 !important;
+  border-color: #c0add1 !important;
+  color: #271b31
 }

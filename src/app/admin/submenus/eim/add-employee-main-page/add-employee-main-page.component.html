@@ -7,11 +7,12 @@
 
       <nav mat-tab-nav-bar>
         <a mat-tab-link *ngFor="let routeLink of routeLinks; let i = index;" [routerLink]="routeLink.link" routerLinkActive="mat-tab-link-active"
-          #rla="routerLinkActive" [active]="activeLinkIndex === i" (click)="activeLinkIndex=i; currentTab=i" [routerLinkActiveOptions]="{exact: true}">
+          #rla="routerLinkActive" [active]="activeLinkIndex === i" (click)="activeLinkIndex=i; currentTab=i" [routerLinkActiveOptions]="{exact: true}"
+          ScrollDirection="after">
           {{routeLink.label}}
         </a>
       </nav>
-      
+
       <router-outlet></router-outlet>
 
       <div style="margin-top:2%">
