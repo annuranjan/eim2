@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatListModule } from '@angular/material/list';
 
 import { AdminComponent } from './admin.component';
 import { SharedModule } from '../core/shared/shared.module';
@@ -15,7 +17,7 @@ import { AddEmployeeComponent } from './submenus/eim/add-employee/add-employee.c
 import { AdminRoutingModule } from './admin-routing.module';
 import { ContactPersonalDetailsComponent } from './submenus/eim/contact-personal-details/contact-personal-details.component';
 import { AddEmployeeMainPageComponent } from './submenus/eim/add-employee-main-page/add-employee-main-page.component';
-import { ReactiveFormsModule } from '../../../node_modules/@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { PersonalComponent } from './submenus/eim/personal/personal.component';
 import { CompanyComponent } from './submenus/eim/company/company.component';
 import { SkillsComponent } from './submenus/eim/skills/skills.component';
@@ -24,6 +26,9 @@ import { EducationComponent } from './submenus/eim/education/education.component
 import { FamilyComponent } from './submenus/eim/family/family.component';
 import { IdComponent } from './submenus/eim/id/id.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { ViewEmployeesMainPageComponent } from './submenus/eim/view-employees-main-page/view-employees-main-page.component';
+import { AaaaaaTestComponent } from './submenus/eim/aaaaaa-test/aaaaaa-test.component';
+import { CreateUserComponent } from './submenus/eim/create-user/create-user.component';
 
 @NgModule({
   imports: [
@@ -37,7 +42,9 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
     MatButtonModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatCardModule
+    MatCardModule,
+    MatCheckboxModule,
+    MatListModule
   ],
   declarations: [
     AdminComponent,
@@ -52,7 +59,10 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
     EducationComponent,
     FamilyComponent,
     IdComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    ViewEmployeesMainPageComponent,
+    AaaaaaTestComponent,
+    CreateUserComponent
   ]
 })
 export class AdminModule { }

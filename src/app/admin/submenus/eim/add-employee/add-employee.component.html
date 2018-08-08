@@ -1,5 +1,9 @@
 <div class="col-8" *ngIf="!submittedSuccessfully">
   <form [formGroup]="addEmpForm" (ngSubmit)="onSubmit()">
+    <div style="margin-bottom: 4%">
+      <mat-hint>*To update an employee, go to "View Employees"</mat-hint>
+    </div>
+
     <div class="row">
       <mat-form-field class="col-8">
         <input matInput placeholder="First Name" type="text" formControlName="firstname">

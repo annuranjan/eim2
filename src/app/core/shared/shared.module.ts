@@ -3,10 +3,12 @@ import { HomeComponent } from './home/home.component';
 import { PanelGeneratorComponent } from './panel-generator/panel-generator.component';
 import { SidebarService } from './home/sidebar.service';
 import { MatExpansionModule } from '@angular/material';
-import { CommonModule } from '../../../../node_modules/@angular/common';
-import { RouterModule } from '../../../../node_modules/@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { NumbersOnlyDirective } from './numbers-only.directive';
+import { GradeDirective } from './grade.directive';
+
 
 
 
@@ -17,8 +19,8 @@ import { NumbersOnlyDirective } from './numbers-only.directive';
     RouterModule,
     MatCardModule
   ],
-  declarations: [HomeComponent, PanelGeneratorComponent, NumbersOnlyDirective],
-  exports: [HomeComponent, NumbersOnlyDirective],
+  declarations: [HomeComponent, PanelGeneratorComponent, NumbersOnlyDirective, GradeDirective],
+  exports: [HomeComponent, NumbersOnlyDirective, GradeDirective],
   providers: [SidebarService]
 })
 export class SharedModule { }

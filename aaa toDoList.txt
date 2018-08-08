@@ -1,0 +1,9 @@
+1. Coloring all the buttons/providing theme to the site.
+2. Validating the passinggrades.
+3. Validating and filtering dates
+4. Route protection of emp details pages
+5. Custom Validators for age so that input value is always less than 150
+
+
+Bugs/Issues:
+1. Should we make an interface for the models such as employee empDetails, empCompanyDetails etc to make sureity for type errors?

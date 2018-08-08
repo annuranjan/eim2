@@ -1,24 +1,24 @@
-<div class="container-fluid">
-
-  <div class="row">
-    <div style="padding: 5px;">
-      <!-- <div class="card-header" style="background-color:white">
-        </div> -->
-
-      <nav mat-tab-nav-bar>
-        <a mat-tab-link *ngFor="let routeLink of routeLinks; let i = index;" [routerLink]="routeLink.link" routerLinkActive="mat-tab-link-active"
-          #rla="routerLinkActive" [active]="activeLinkIndex === i" (click)="activeLinkIndex=i; currentTab=i" [routerLinkActiveOptions]="{exact: true}"
-          ScrollDirection="after">
-          {{routeLink.label}}
-        </a>
-      </nav>
-
-      <router-outlet></router-outlet>
-
-      <div style="margin-top:2%">
-        <button mat-raised-button type="button" [color]="accent" (click)="navigateToPrevious()" style="background-color:#725191; color:white; margin-right: 2%">Previous</button>
-        <button mat-raised-button type="button" (click)="navigateToNext()" style="background-color:#725191; color:white">Next</button>
+<mat-card>
+  <div class="container-fluid">
+    <div class="row">
+      <div style="padding: 5px;">
+        <nav mat-tab-nav-bar>
+          <a mat-tab-link *ngFor="let routeLink of routeLinks; let i = index;" [routerLink]="routeLink.link" routerLinkActive="mat-tab-link-active"
+            #rla="routerLinkActive" [active]="activeLinkIndex === i" (click)="activeLinkIndex=i; setCurrentTab(i)" [routerLinkActiveOptions]="{exact: true}"
+            ScrollDirection="after">
+            {{routeLink.label}}
+          </a>
+        </nav>
+        <mat-card-content style="margin-top: 4%;margin-bottom: 2%">
+          <router-outlet></router-outlet>
+        </mat-card-content>
+        <div style="margin-top:2%">
+          <mat-card-actions>
+            <button mat-raised-button type="button" [color]="accent" (click)="navigateToPrevious()" style="background-color:#725191; color:white; margin-right: 2%">Previous</button>
+            <button mat-raised-button type="button" (click)="navigateToNext()" style="background-color:#725191; color:white">Next</button>
+          </mat-card-actions>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</mat-card>

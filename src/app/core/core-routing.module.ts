@@ -1,8 +1,8 @@
-import { Routes, RouterModule } from "../../../node_modules/@angular/router";
+import { Routes, RouterModule } from "@angular/router";
 import { LoginComponent } from "./core-components/login/login.component";
 import { AdminComponent } from "../admin/admin.component";
 import { AdminModule } from "../admin/admin.module";
-import { NgModule } from "../../../node_modules/@angular/core";
+import { NgModule } from "@angular/core";
 
 const coreRoutes: Routes = [
     // { path: "", pathMatch: "full", redirectTo: "login" },

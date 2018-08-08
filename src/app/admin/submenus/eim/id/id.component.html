@@ -1,3 +1,58 @@
-<p>
-  id works!
-</p>
+<!-- passportGroup: this.fb.group({
+  passNum: [''],
+  yearOfIssue: [''],
+  yearOfExpiry: ['']
+}),
+otherIdentites: this.fb.group({
+  idName: [''],
+  idNum: ['']
+})
+}); -->
+
+<form [formGroup]="idForm" (ngSubmit)="onSubmit()">
+  <div class="col-8">
+    <div formGroupName="passportGroup">
+      <div class="row">
+        <div class="col-4">
+          <mat-form-field style="width: 100%">
+            <input matInput type="text" placeholder="Passport Number">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <mat-form-field style="width: 100%">
+            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="issueDate" formControlName="yearOfIssue" placeholder="Year of Issue">
+            <mat-datepicker-toggle matSuffix [for]="issueDate"></mat-datepicker-toggle>
+            <mat-datepicker #issueDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field style="width: 100%">
+            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="expiryDate" formControlName="yearOfExpiry" placeholder="Year of Expiry">
+            <mat-datepicker-toggle matSuffix [for]="expiryDate"></mat-datepicker-toggle>
+            <mat-datepicker #expiryDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <p>
+      <b>Other Identifications</b>
+    </p>
+    <div formGroupName="otherIdentites">
+      <div class="row">
+        <div class="col-4">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Id Name" formControlName="idName">
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Id Number" formControlName="idNum">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

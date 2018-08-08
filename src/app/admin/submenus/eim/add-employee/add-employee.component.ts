@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RequestBuilderService } from '../../../../core/util/request-builder.service';
+import { AppGuard } from '../../../../core/util/appGuard.service';
 
 @Component({
   selector: 'app-add-employee',
@@ -17,7 +18,10 @@ export class AddEmployeeComponent implements OnInit {
     { value: 'manager', viewValue: 'Manager' },
     { value: 'employee', viewValue: 'Employee' }
   ];
-  constructor(private reqBuilder: RequestBuilderService) { }
+  constructor(
+    private reqBuilder: RequestBuilderService,
+    private appGuard: AppGuard
+  ) { }
 
   ngOnInit() {
     this.addEmpForm = new FormGroup({
@@ -32,17 +36,19 @@ export class AddEmployeeComponent implements OnInit {
   onSubmit() {
     console.log(this.addEmpForm);
 
-    // const emp = {
-    //   firstname: this.addEmpForm.value.firstname,
-    //   middlename: this.addEmpForm.value.middlename,
-    //   lastname: this.addEmpForm.value.lastname,
-    //   email: this.addEmpForm.value.email,
-    //   usertype: this.addEmpForm.value.usertype,
-    // };
-    // this.reqBuilder.addAnEmp(emp).subscribe((emp) => {
-    //   this.submittedSuccessfully = true;
-    // },
-    //   (error) => { console.log(error); });
+    const emp = {
+      firstname: this.addEmpForm.value.firstname,
+      middlename: this.addEmpForm.value.middlename,
+      lastname: this.addEmpForm.value.lastname,
+      email: this.addEmpForm.value.email,
+      usertype: this.addEmpForm.value.usertype,
+    };
+    this.reqBuilder.addAnEmp(emp).subscribe((emp) => {
+      this.submittedSuccessfully = true;
+      this.appGuard.newEmpCreated = true;
+    },
+      (error) => { console.log(error); });
   }
 
 }
+

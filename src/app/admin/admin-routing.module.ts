@@ -12,23 +12,33 @@ import { FamilyComponent } from "./submenus/eim/family/family.component";
 import { IdComponent } from "./submenus/eim/id/id.component";
 import { AddEmployeeComponent } from "./submenus/eim/add-employee/add-employee.component";
 import { AdminHomeComponent } from "./admin-home/admin-home.component";
+import { ViewEmployeesMainPageComponent } from "./submenus/eim/view-employees-main-page/view-employees-main-page.component";
+import { AppGuard } from "../core/util/appGuard.service";
+import { CreateUserComponent } from "./submenus/eim/create-user/create-user.component";
+// import { AaaaaaTestComponent } from "./submenus/eim/aaaaaa-test/aaaaaa-test.component";
 
 const adminRoutes: Routes = [
     {
         path: "admin", component: AdminComponent, children: [
             { path: "", component: AdminHomeComponent },
-            { path: "viewEmployees", component: ViewEmployeesComponent },
+            {
+                path: "viewEmployees", component: ViewEmployeesMainPageComponent, children: [
+                    // { path: "", component: AaaaaaTestComponent }
+                    { path: "", component: ViewEmployeesComponent }
+                ]
+            },
+            { path: "createUser", component: CreateUserComponent },
             {
                 path: "addEmployee", component: AddEmployeeMainPageComponent, children: [
                     { path: "", redirectTo: "addEmployee", pathMatch: "full" },
                     { path: "addEmployee", component: AddEmployeeComponent },
-                    { path: "personal", component: PersonalComponent },
-                    { path: "company", component: CompanyComponent },
-                    { path: "skills", component: SkillsComponent },
-                    { path: "experience", component: ExperienceComponent },
-                    { path: "education", component: EducationComponent },
-                    { path: "family", component: FamilyComponent },
-                    { path: "id", component: IdComponent },
+                    { path: "personal", component: PersonalComponent, canActivate: [AppGuard] },
+                    { path: "company", component: CompanyComponent, canActivate: [AppGuard] },
+                    { path: "skills", component: SkillsComponent, canActivate: [AppGuard] },
+                    { path: "experience", component: ExperienceComponent, canActivate: [AppGuard] },
+                    { path: "education", component: EducationComponent, canActivate: [AppGuard] },
+                    { path: "family", component: FamilyComponent, canActivate: [AppGuard] },
+                    { path: "id", component: IdComponent, canActivate: [AppGuard] },
                 ]
             }
         ]

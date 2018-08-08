@@ -7,7 +7,8 @@ export class SidebarService {
             title: "EIM",
             submenus: {
                 "View Employees": "viewEmployees",
-                "Add Employee": "addEmployee"
+                "Add Employee": "addEmployee",
+                "Create User": "createUser"
             }
         },
         {

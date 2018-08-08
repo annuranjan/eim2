@@ -11,6 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { CoreRoutingModule } from './core-routing.module';
 import { UtilModule } from './util/util.module';
 import { RequestBuilderService } from './util/request-builder.service';
+import { AppGuard } from './util/appGuard.service';
 
 @NgModule({
   imports: [
@@ -29,6 +30,6 @@ import { RequestBuilderService } from './util/request-builder.service';
 
   ],
   declarations: [LoginComponent],
-  providers: [RequestBuilderService]
+  providers: [RequestBuilderService, AppGuard]
 })
 export class CoreModule { }

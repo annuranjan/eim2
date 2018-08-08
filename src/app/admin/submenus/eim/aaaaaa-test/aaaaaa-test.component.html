@@ -1,0 +1,68 @@
+<!-- <mat-list>
+  <mat-list-item *ngFor="let message of messages">
+    <img matListAvatar src="../../../../../assets/businessman.png" alt="...">
+    <h3 matLine> {{message.from}} </h3>
+    <p matLine>
+      <span> {{message.subject}} </span>
+      <span class="demo-2"> -- {{message.content}} </span>
+    </p>
+    <div matLine>
+      <button mat-raised-button style="width: 20px;
+      background-color: #C0ADD1;
+      height: 20px;
+      line-height: 20px;
+      min-height: 20px;
+      vertical-align: top;
+      font-size: 10px;
+      padding: 0 0;
+      margin: 0;;">View Update</button> &nbsp;
+      <button mat-raised-button color="warn" style="width: 20px;
+      height: 20px;
+      line-height: 20px;
+      min-height: 20px;
+      vertical-align: top;
+      font-size: 10px;
+      padding: 0 0;
+      margin: 0;;">Delete</button>
+    </div>
+  </mat-list-item>
+</mat-list> -->
+<mat-list>
+  <mat-list-item *ngFor="let message of messages">
+    <img matListAvatar src="../../../../../assets/businessman.png" alt="...">
+    <div matLine class="col-12">
+      <div class="row">
+        <div class="col-2">
+          <b> {{message.from}} </b>>
+        </div>
+        <div class="col4-">
+          <p>
+            <span> {{message.subject}} </span>
+            <span class="demo-2"> -- {{message.content}} </span>
+          </p>
+        </div>
+
+        <div class="col-6">
+          <button mat-raised-button style="width: 20px;
+                  background-color: #C0ADD1;
+                  height: 20px;
+                  line-height: 20px;
+                  min-height: 20px;
+                  vertical-align: top;
+                  font-size: 10px;
+                  padding: 0 0;
+                  margin: 0;;">View Update</button> &nbsp;
+          <button mat-raised-button color="warn" style="width: 20px;
+                  height: 20px;
+                  line-height: 20px;
+                  min-height: 20px;
+                  vertical-align: top;
+                  font-size: 10px;
+                  padding: 0 0;
+                  margin: 0;;">Delete</button>
+        </div>
+      </div>
+    </div>
+
+  </mat-list-item>
+</mat-list>

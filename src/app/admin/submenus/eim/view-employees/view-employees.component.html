@@ -1,3 +1,27 @@
-<p>
-  view-employees works!
-</p>
+<div class="col-10">
+  <div class="list-group">
+    <div class="list-group-item" style="background-color: #C0ADD1">
+      <div class="row">
+        <div class="col-1">
+          <img src="../../../../../assets/businessman (3).png" alt="emp logo">
+        </div>
+        <div class="col-2">Emp Id</div>
+        <div class="col-3">Employee Name</div>
+        <div class="col-5"></div>
+      </div>
+    </div>
+    <div class="list-group-item" *ngFor="let employee of employees; let i = index">
+      <div class="row" style="max-height: 1%;">
+        <div class="col-1">
+          <img src="../../../../../assets/businessman (3).png" alt="emp logo">
+        </div>
+        <div class="col-2">{{employee.empId}}</div>
+        <div class="col-3">{{employee.firstname + ' '+ employee.lastname}}</div>
+        <div class="col-5">
+          <button mat-raised-button type="button" class="lavButton" style="margin-right: 4%">View/Update</button>
+          <button mat-raised-button type="button" color="warn">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
