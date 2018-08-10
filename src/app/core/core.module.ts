@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatNativeDateModule } from '@angular/material';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material';
 
 import { AdminModule } from '../admin/admin.module';
 import { ManagerModule } from '../manager/manager.module';
@@ -30,6 +30,6 @@ import { AppGuard } from './util/appGuard.service';
 
   ],
   declarations: [LoginComponent],
-  providers: [RequestBuilderService, AppGuard]
+  providers: [RequestBuilderService, AppGuard, { provide: MAT_DATE_LOCALE, useValue: 'en-IN' }]
 })
 export class CoreModule { }

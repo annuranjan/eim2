@@ -51,6 +51,11 @@
         </mat-error>
       </mat-form-field>
     </div>
+    <div class="row">
+      <div class="col-8">
+        <input type="file" id="photo" (change)="onFileChange($event)" #fileInput>
+      </div>
+    </div>
 
     <div class="row">
       <div class="col-8">

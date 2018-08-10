@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AddEmpService } from '../../../services/add-emp.service';
 
 @Component({
   selector: 'app-personal',
@@ -51,17 +52,21 @@ export class PersonalComponent implements OnInit {
     { value: "other", viewValue: "Others" },
   ];
 
-  constructor(private fb: FormBuilder) { }
-
+  constructor(
+    private fb: FormBuilder,
+    private addEmpService: AddEmpService
+  ) { }
   ngOnInit() {
     this.personalForm = this.fb.group({
-      dob: ['', Validators.required],
-      gender: ['', Validators.required],
-      nationality: ['', Validators.required],
-      bloodGroup: ['', Validators.required],
-      maritalStatus: ['', Validators.required],
-      category: ['', Validators.required],
-      religion: ['', Validators.required],
+      personal: this.fb.group({
+        dob: ['', Validators.required],
+        gender: ['', Validators.required],
+        nationality: ['', Validators.required],
+        bloodGroup: ['', Validators.required],
+        maritalStatus: ['', Validators.required],
+        category: ['', Validators.required],
+        religion: ['', Validators.required],
+      }),
       contactDetails: this.fb.group({
         address: this.fb.group({
           address: ['', Validators.required],
@@ -76,18 +81,42 @@ export class PersonalComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.personalForm);
+    console.log(this.personalForm.value);
+    let personalFormSubmitted = {
+      "contactDetails": {
+        "address": {
+          "address": this.personalForm.value.contactDetails.address.address,
+          "city": this.personalForm.value.contactDetails.address.city,
+          "state": this.personalForm.value.contactDetails.address.state,
+          "pincode": this.personalForm.value.contactDetails.address.pincode
+        },
+        "email": this.personalForm.value.contactDetails.email,
+        "phone": this.personalForm.value.contactDetails.phone
+      },
+      "personal": {
+        "dob": this.personalForm.value.personal.dob,
+        "gender": this.personalForm.value.personal.gender,
+        "nationality": this.personalForm.value.personal.nationality,
+        "bloodGroup": this.personalForm.value.personal.bloodGroup,
+        "maritalStatus": this.personalForm.value.personal.maritalStatus,
+        "category": this.personalForm.value.personal.category,
+        "religion": this.personalForm.value.personal.religion
+      }
+    }
+    this.addEmpService.empDetailsObj = { ...this.addEmpService.empDetailsObj, ...personalFormSubmitted };
+    console.log(this.addEmpService.empDetailsObj);
   }
 }
 
-
-// dob: String,
-// gender: String,
-// nationality: String,
-// bloodGroup: String,
-// maritalStatus: String,
-// category: String,
-// religion: String
+// personal: {
+//   dob: String,
+//   gender: String,
+//   nationality: String,
+//   bloodGroup: String,
+//   maritalStatus: String,
+//   category: String,
+//   religion: String
+// }
 
 // contactDetails: {
 //   address: {

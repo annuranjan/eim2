@@ -29,6 +29,7 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { ViewEmployeesMainPageComponent } from './submenus/eim/view-employees-main-page/view-employees-main-page.component';
 import { AaaaaaTestComponent } from './submenus/eim/aaaaaa-test/aaaaaa-test.component';
 import { CreateUserComponent } from './submenus/eim/create-user/create-user.component';
+import { AddEmpService } from './services/add-emp.service';
 
 @NgModule({
   imports: [
@@ -63,6 +64,7 @@ import { CreateUserComponent } from './submenus/eim/create-user/create-user.comp
     ViewEmployeesMainPageComponent,
     AaaaaaTestComponent,
     CreateUserComponent
-  ]
+  ],
+  providers: [AddEmpService]
 })
 export class AdminModule { }

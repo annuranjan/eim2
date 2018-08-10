@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { KeyValuePipe } from '../../../../../../node_modules/@angular/common';
+import { KeyValuePipe } from '@angular/common';
 
 @Component({
   selector: 'app-create-user',
