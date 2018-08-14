@@ -9,6 +9,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class IdComponent implements OnInit {
 
   idForm: FormGroup;
+  maxDateIssue = new Date();
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {

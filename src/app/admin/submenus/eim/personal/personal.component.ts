@@ -105,6 +105,9 @@ export class PersonalComponent implements OnInit {
     }
     this.addEmpService.empDetailsObj = { ...this.addEmpService.empDetailsObj, ...personalFormSubmitted };
     console.log(this.addEmpService.empDetailsObj);
+    this.addEmpService.submitEmpDetForm(personalFormSubmitted).subscribe(response => {
+      console.log(response);
+    });
   }
 }
 

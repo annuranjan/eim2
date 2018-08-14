@@ -49,10 +49,10 @@ export class SkillsComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.skillsForm);
-    if (this.skillsForm.status === "INVALID") {
-      this.statusInvalid = true;
-      return;
-    }
+    console.log(this.skillsForm.value);
+    // if (this.skillsForm.status === "INVALID") {
+    //   this.statusInvalid = true;
+    //   return;
+    // }
   }
 }

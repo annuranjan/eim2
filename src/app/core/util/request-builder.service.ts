@@ -17,8 +17,9 @@ export class RequestBuilderService {
 
     base = "http://localhost:1101/";
     empBase = this.base + "employees/";
+    emp
 
-
+    //CRUD Operations Requests on employees
     getAllEmp(): Observable<any> {
         return this.reqDispatcher.get(this.empBase);
     }
@@ -43,9 +44,18 @@ export class RequestBuilderService {
         return this.reqDispatcher.put(url, {});
     }
 
+    //Login Request
     login(username: string, password: string) {
         const url = this.base + "login/";
         return this.reqDispatcher.post(url, { username: username, password: password });
+    }
+
+    //CRUD Operations Requests on Employee Detials
+    // router.post('/employees/:id/details', empDetails.addDetails);
+
+    addEmpDetails(id: number, empDetails: Object): Observable<any> {
+        const url = this.empBase + id + "/details";
+        return this.reqDispatcher.post(url, empDetails);
     }
 
 }

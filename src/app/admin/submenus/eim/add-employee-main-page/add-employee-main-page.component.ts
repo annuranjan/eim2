@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppGuard } from '../../../../core/util/appGuard.service';
+import { AddEmpService } from '../../../services/add-emp.service';
 
 @Component({
   selector: 'app-add-employee-main-page',
@@ -16,7 +17,8 @@ export class AddEmployeeMainPageComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private appGuard: AppGuard
+    private appGuard: AppGuard,
+    private addEmpServ: AddEmpService
   ) {
     this.routeLinks = [
       {
@@ -77,6 +79,7 @@ export class AddEmployeeMainPageComponent implements OnInit, OnDestroy {
   }
 
   navigateToNext() {
+    debugger;
     if (this.appGuard.newEmpCreated === false)
       return;
     if (+this.currentTab === 7) {
@@ -98,5 +101,7 @@ export class AddEmployeeMainPageComponent implements OnInit, OnDestroy {
   // }
   ngOnDestroy() {
     this.appGuard.newEmpCreated = false;
+    this.addEmpServ.empDetailsObj.empId = undefined;
   }
 }
+

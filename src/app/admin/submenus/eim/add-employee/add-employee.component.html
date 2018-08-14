@@ -7,7 +7,6 @@
     <div class="row">
       <mat-form-field class="col-8">
         <input matInput placeholder="First Name" type="text" formControlName="firstname">
-        <mat-error *ngIf="addEmpForm.get('firstname').hasError('required')">Please enter your first name!</mat-error>
       </mat-form-field>
     </div>
 
@@ -53,7 +52,7 @@
     </div>
     <div class="row">
       <div class="col-8">
-        <input type="file" id="photo" (change)="onFileChange($event)" #fileInput>
+        <input type="file" id="img" (change)="onFileChange($event)" #fileInput>
       </div>
     </div>
 

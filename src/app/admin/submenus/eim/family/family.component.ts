@@ -9,7 +9,7 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 export class FamilyComponent implements OnInit {
 
   famForm: FormGroup;
-  checkBoxVal: boolean;
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -22,10 +22,11 @@ export class FamilyComponent implements OnInit {
 
   getAFamGroup() {
     return this.fb.group({
-      name: ['', Validators.required],
-      relation: ['', Validators.required],
-      age: ['', Validators.required],
-      phone: ['', Validators.required]
+      'name': ['', Validators.required],
+      'relation': ['', Validators.required],
+      'age': ['', Validators.required],
+      'phone': ['', Validators.required],
+      'checkBoxVal': [false],
     });
   }
   getAEmergencyGroup() {
@@ -59,7 +60,9 @@ export class FamilyComponent implements OnInit {
     (<FormArray>this.famForm.get('emergencyArray')).push(this.getAEmergencyGroup());
   }
   deleteAnEmgGroup(index: number) {
+    let name: string = (<FormArray>this.famForm.get('emergencyArray')).at(index).get('name').value;
     (<FormArray>this.famForm.get('emergencyArray')).removeAt(index);
+    (<FormArray>this.famForm.get('famArray')).controls.find(x => x.value.name === name).get('checkBoxVal').setValue(false);
   }
 
   addANomineeGroup() {
@@ -70,16 +73,10 @@ export class FamilyComponent implements OnInit {
   }
 
   checkAddRemoveToEmgContact(famGroup: any) {
-    if (this.checkBoxVal === undefined) {
-      this.checkBoxVal = true;
-    } else {
-      this.checkBoxVal = this.checkBoxVal === true ? false : true;
-    }
-    console.log("Check clicked!");
-    console.log(this.checkBoxVal);
-    console.log("famGroup passed");
-    console.log(famGroup);
-    if (this.checkBoxVal === true) {
+    famGroup.checkBoxVal = famGroup.checkBoxVal === true ? false : true;
+    (<FormArray>this.famForm.get('famArray')).controls.find(x => x.value.name === famGroup.name).get('checkBoxVal').setValue(famGroup.checkBoxVal);
+
+    if (famGroup.checkBoxVal === true) {
       let emgGroup = this.fb.group({
         name: [famGroup.name],
         relation: [famGroup.relation],
@@ -90,6 +87,12 @@ export class FamilyComponent implements OnInit {
         pincode: ['', Validators.required]
       });
       (<FormArray>this.famForm.get('emergencyArray')).insert(0, emgGroup);
+    }
+    if (famGroup.checkBoxVal === false) {
+      let index: number = (<FormArray>this.famForm.get('emergencyArray')).controls.findIndex(x => x.value.name === famGroup.name);
+      console.log("index found is: " + index);
+      if (index !== -1)
+        (<FormArray>this.famForm.get('emergencyArray')).removeAt(index);
     }
   }
 

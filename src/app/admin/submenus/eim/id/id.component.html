@@ -22,7 +22,7 @@ otherIdentites: this.fb.group({
       <div class="row">
         <div class="col-4">
           <mat-form-field style="width: 100%">
-            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="issueDate" formControlName="yearOfIssue" placeholder="Year of Issue">
+            <input matInput [min]="minDate" [max]="maxDateIssue" [matDatepicker]="issueDate" formControlName="yearOfIssue" placeholder="Year of Issue">
             <mat-datepicker-toggle matSuffix [for]="issueDate"></mat-datepicker-toggle>
             <mat-datepicker #issueDate></mat-datepicker>
           </mat-form-field>

@@ -36,13 +36,13 @@ export class AddEmployeeComponent implements OnInit {
       'lastname': new FormControl(null, Validators.required),
       'email': new FormControl(null, [Validators.required, Validators.email]),
       'usertype': new FormControl(null, Validators.required),
-      'photo': new FormControl(null)
+      'img': new FormControl(null)
     });
   }
 
   onSubmit() {
     console.log(this.addEmpForm.value);
-    // console.log(this.addEmpForm.value.photo.value);
+    // console.log(this.addEmpForm.value.img.value);
 
     const emp = {
       "firstname": this.addEmpForm.value.firstname,
@@ -50,7 +50,7 @@ export class AddEmployeeComponent implements OnInit {
       "lastname": this.addEmpForm.value.lastname,
       "email": this.addEmpForm.value.email,
       "usertype": this.addEmpForm.value.usertype,
-      "img": this.addEmpForm.value.photo.value
+      "img": this.addEmpForm.value.img
     };
 
     console.log(emp);
@@ -58,6 +58,10 @@ export class AddEmployeeComponent implements OnInit {
     this.reqBuilder.addAnEmp(emp).subscribe((emp) => {
       this.submittedSuccessfully = true;
       this.appGuard.newEmpCreated = true;
+      console.log("response received...");
+      console.log(emp);
+      this.addEmpService.empDetailsObj.empId = emp.empId;
+      console.log(this.addEmpService.empDetailsObj.empId);
     },
       (error) => {
         console.log(error);
@@ -71,14 +75,13 @@ export class AddEmployeeComponent implements OnInit {
   //     let file = event.target.files[0];
   //     reader.readAsDataURL(file);
   //     reader.onload = () => {
-  //       this.addEmpForm.get('photo').patchValue({
+  //       this.addEmpForm.get('img').patchValue({
   //         filename: file.name,
   //         filetype: file.type,
   //         value: reader.result.split(',')[1]
   //       });
   //       this.cd.markForCheck();
   //     };
-
   //   }
   // }''
 
@@ -87,11 +90,11 @@ export class AddEmployeeComponent implements OnInit {
     if (event.target.files && event.target.files.length > 0) {
       let file = event.target.files[0];
       // this.addEmpForm.patchValue({
-      //   photo: file
+      //   img: file
       // })
       reader.readAsDataURL(file);
       reader.onload = () => {
-        this.addEmpForm.get('photo').patchValue({
+        this.addEmpForm.get('img').patchValue({
           filename: file.name,
           filetype: file.type,
           value: reader.result.split(',')[1]
@@ -102,7 +105,7 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   clearFile() {
-    this.addEmpForm.get('photo').setValue(null);
+    this.addEmpForm.get('img').setValue(null);
     this.fileInput.nativeElement.value = '';
   }
 

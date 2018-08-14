@@ -1,37 +1,3 @@
-<!-- this.famForm = this.fb.group({
-  famArray: this.fb.array([this.getAFamGroup()]),
-  emergencyArray: this.fb.array([this.getAEmergencyGroup()]),
-  nomineeArray: this.fb.array([this.getANomineeGroup()])
-});
-}
-
-getAFamGroup() {
-return this.fb.group({
-  name: ['', Validators.required],
-  relation: ['', Validators.required],
-  age: ['', Validators.required],
-  phone: ['', Validators.required]
-});
-}
-getAEmergencyGroup() {
-return this.fb.group({
-  name: ['', Validators.required],
-  relation: ['', Validators.required],
-  address: ['', Validators.required],
-  city: ['', Validators.required],
-  state: ['', Validators.required],
-  phone: ['', Validators.required]
-});
-}
-
-getANomineeGroup() {
-return this.fb.group({
-  name: ['', Validators.required],
-  relation: ['', Validators.required],
-  phone: ['', Validators.required]
-})
-} -->
-
 <form [formGroup]="famForm" (ngSubmit)="onSubmit()">
   <div class="col-12">
     <div class="card">
@@ -66,12 +32,13 @@ return this.fb.group({
                   </mat-form-field>
                 </div>
                 <div class="col-1">
-                  <button mat-raised-button color="warn" (click)="deleteAFamGroup()">Delete</button>
+                  <button mat-raised-button type="button" color="warn" (click)="deleteAFamGroup()">Delete</button>
                 </div>
               </div>
               <div class="row" style="margin-bottom: 2%">
                 <div class="col-2">
-                  <mat-checkbox [disabled]="famForm.get('famArray').controls[i].get('name').invalid" (change)="checkAddRemoveToEmgContact(famGroupCtrl.value)">Mark as Emergency Contact</mat-checkbox>
+                  <mat-checkbox [disabled]="famForm.get('famArray').controls[i].get('name').invalid" [checked]="famForm.get('famArray').controls[i].get('checkBoxVal').value"
+                    (change)="checkAddRemoveToEmgContact(famGroupCtrl.value)">Mark as Emergency Contact</mat-checkbox>
                 </div>
               </div>
             </div>
@@ -131,20 +98,14 @@ return this.fb.group({
                   </mat-form-field>
                 </div>
                 <div class="col-2">
-                  <button mat-raised-button type="button" (click)="deleteAnEmgGroup()" color="warn">Delete</button>
+                  <button mat-raised-button type="button" (click)="deleteAnEmgGroup(i)" color="warn">Delete</button>
                 </div>
               </div>
+              <hr>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-
   </div>
 </form>
-
-<!-- name: ['', Validators.required], relation: ['', Validators.required], address: ['', Validators.required], city: ['', Validators.required],
-state: ['', Validators.required], phone: ['', Validators.required] -->
-
-<!-- [(ngModel)]="checked" -->
